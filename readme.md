@@ -10,3 +10,8 @@ alternatively here are the libraries
 pip install discord.py python-dotenv apscheduler
 pip freeze > requirements.txt
 deactivate
+
+
+if you are using 3.13 python to clone it doesnt have the required library for audioop
+pip install audioop-lts 
+install it manually ^
