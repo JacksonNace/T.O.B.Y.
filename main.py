@@ -1,21 +1,18 @@
+import os
 import discord
-from discord.ext import commands
+from dotenv import load_dotenv
+load_dotenv()
 
-# Intents (required for bots in 2025)
-intents = discord.Intents.default()
-intents.messages = True
+class Client(discord.Client):
+  async def on_ready(self): #onready function is a built in discord function that runs when connected to discord
+    print(f'Logged on as {self.user}!')
 
-# Bot setup
-bot = commands.Bot(command_prefix="!", intents=intents)
+intents = discord.Intents.default() # using default permissions
+intents.message_content = True
 
-@bot.event
-async def on_ready():
-    print(f"Bot is online! Logged in as {bot.user}")
-
-@bot.command()
-async def hello(ctx):
-    """Responds with a greeting."""
-    await ctx.send(f"Hello, {ctx.author.mention}! How can I help you today?")
-
-# Run the bot
-bot.run("YOUR_BOT_TOKEN")
+client = Client (intents=intents)
+DISCORD_BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN")
+if not DISCORD_BOT_TOKEN:
+    print("Error: DISCORD_BOT_TOKEN is not defined in the .env file.")
+else:
+    client.run(DISCORD_BOT_TOKEN)
