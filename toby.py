@@ -46,6 +46,14 @@ async def printer(interaction:discord.Interaction, printer: str):
 
 @client.tree.command(name="embed", description="Embed", guild=discord.Object(id = GUILD_ID)) # guild is for the specific server id youre testing in
 async def embed(interaction:discord.Interaction):
-  embed = discord.Embed(title="Title 4 embed", url="https://www.youtube.com", description="description4embed")
+  embed = discord.Embed(title="Title 4 embed", url="https://www.youtube.com", description="description4embed", color=discord.Color.red())
+  #embed.set_thumbnail(url="") takes image file
+  embed.add_field(name="Field 1 Title", value="valuedescription")
+  embed.add_field(name="Field 2 Title", value="valuedescription", inline=False)
+  embed.set_footer(text="smaller footer description")
+  embed.set_author(name=interaction.user.name, url="https://www.youtube.com", ) #for image add icon_url="file"
   await interaction.response.send_message(embed=embed)
+
+
+
 client.run(DISCORD_BOT_TOKEN)
