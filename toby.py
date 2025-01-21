@@ -44,4 +44,8 @@ async def sayHello(interaction:discord.Interaction):
 async def printer(interaction:discord.Interaction, printer: str):
   await interaction.response.send_message(printer)
 
+@client.tree.command(name="embed", description="Embed", guild=discord.Object(id = GUILD_ID)) # guild is for the specific server id youre testing in
+async def embed(interaction:discord.Interaction):
+  embed = discord.Embed(title="Title 4 embed", url="https://www.youtube.com", description="description4embed")
+  await interaction.response.send_message(embed=embed)
 client.run(DISCORD_BOT_TOKEN)
