@@ -37,8 +37,11 @@ client = Client(command_prefix="!", intents =intents) # command prefix is the / 
 ############################################################################
 
 @client.tree.command(name="hello", description="Say hello!", guild=discord.Object(id = GUILD_ID)) # guild is for the specific server id youre testing in
-
 async def sayHello(interaction:discord.Interaction):
   await interaction.response.send_message("Hi there! ")
+
+@client.tree.command(name="printer", description="I will copy you!", guild=discord.Object(id = GUILD_ID)) # guild is for the specific server id youre testing in
+async def printer(interaction:discord.Interaction, printer: str):
+  await interaction.response.send_message(printer)
 
 client.run(DISCORD_BOT_TOKEN)
